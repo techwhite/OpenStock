@@ -110,7 +110,7 @@ export default function EmailsPage() {
           <Mail className="h-16 w-16 text-muted-foreground mb-6" />
           <h1 className="text-3xl font-bold mb-2">连接 Gmail</h1>
           <p className="text-muted-foreground mb-8 max-w-md">
-            要查看您的邮件，请先授权 OpenStock 访问您的 Gmail 账户。
+            要查看您的邮件，请先授权 Openlearn 访问您的 Gmail 账户。
             我们只会读取邮件，不会发送或删除任何内容。
           </p>
           <Button size="lg" asChild>

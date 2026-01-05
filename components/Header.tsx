@@ -13,7 +13,7 @@ const Header = async ({ user }: { user: User }) => {
                 <Link href="/" className="flex items-center justify-center gap-2">
                     <Image
                         src="https://i.ibb.co/r28VWPjS/Screenshot-2025-10-04-123317-Picsart-Ai-Image-Enhancer-removebg-preview.png"
-                        alt="OpenStock"
+                        alt="OpenLearn"
                         width={200}
                         height={50}
                     />

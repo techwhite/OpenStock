@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service - OpenStock',
+  title: 'Terms of Service - OpenLearn',
   description: 'Fair terms of service - built on trust, transparency, and community values',
 };
 
@@ -42,11 +42,11 @@ export default function TermsPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-gray-100 mb-4">🎯 The Basics</h2>
           <p className="text-gray-200 mb-4">
-            By using OpenStock, you're joining our community. Here's what that means:
+            By using OpenLearn, you're joining our community. Here's what that means:
           </p>
           <div className="bg-gray-800 border border-gray-700 rounded-lg p-6">
             <ul className="text-gray-200 space-y-3">
-              <li>💙 <strong>Respectful Use:</strong> Use OpenStock to learn, build, and grow - not to harm others</li>
+              <li>💙 <strong>Respectful Use:</strong> Use OpenLearn to learn, build, and grow - not to harm others</li>
               <li>🎓 <strong>Educational Focus:</strong> Perfect for students, personal projects, and learning</li>
               <li>🤝 <strong>Community Spirit:</strong> Help others when you can, ask for help when you need it</li>
               <li>🔓 <strong>Open Source Values:</strong> Contribute back when possible, share knowledge freely</li>
@@ -57,7 +57,7 @@ export default function TermsPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-gray-100 mb-4">💰 Our Free Forever Promise</h2>
           <div className="bg-green-900 border border-green-700 rounded-lg p-6">
-            <p className="text-green-200 font-medium mb-3">Core features of OpenStock will always be free:</p>
+            <p className="text-green-200 font-medium mb-3">Core features of OpenLearn will always be free:</p>
             <ul className="text-gray-200 space-y-2">
               <li>✅ Real-time stock data and charts</li>
               <li>✅ Personal watchlists and portfolio tracking</li>
@@ -77,7 +77,7 @@ export default function TermsPage() {
             <p className="text-yellow-200 font-medium mb-2">Let's be crystal clear about this:</p>
             <div className="text-gray-200 space-y-3">
               <p>
-                <strong>OpenStock is an educational and analysis tool, not investment advice.</strong>
+                <strong>OpenLearn is an educational and analysis tool, not investment advice.</strong>
                 We provide data and tools to help you make informed decisions, but the decisions are yours.
               </p>
               <p>
@@ -140,7 +140,7 @@ export default function TermsPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-gray-100 mb-4">🔧 Service Availability</h2>
           <p className="text-gray-200 mb-4">
-            We're committed to keeping OpenStock running, but we're also realistic:
+            We're committed to keeping OpenLearn running, but we're also realistic:
           </p>
           <ul className="text-gray-200 space-y-2 ml-6">
             <li>• We aim for 99.9% uptime, but stuff happens (we're human!)</li>

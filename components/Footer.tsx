@@ -12,14 +12,14 @@ const Footer = () => {
                         <Link href="/" className="flex items-center gap-2 mb-4">
                             <Image
                                 src="https://i.ibb.co/r28VWPjS/Screenshot-2025-10-04-123317-Picsart-Ai-Image-Enhancer-removebg-preview.png"
-                                alt="OpenStock"
+                                alt="OpenLearn"
                                 width={150}
                                 height={38}
                                 className="brightness-0 invert"
                             />
                         </Link>
                         <p className="text-gray-400 mb-10 max-w-md">
-                            OpenStock is an open-source alternative to expensive market platforms. Track real-time prices, set personalized alerts, and explore detailed company insights — built openly, for everyone, forever free.
+                            OpenLearn is an open-source alternative to expensive market platforms. Track real-time prices, set personalized alerts, and explore detailed company insights — built openly, for everyone, forever free.
                         </p>
                         <div className="flex space-x-6">
                             <Link

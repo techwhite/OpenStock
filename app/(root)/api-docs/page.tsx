@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'API Documentation - OpenStock',
-  description: 'Free and open API documentation for OpenStock platform - no paywalls, no barriers',
+  title: 'API Documentation - OpenLearn',
+  description: 'Free and open API documentation for OpenLearn platform - no paywalls, no barriers',
 };
 
 export default function ApiDocsPage() {
@@ -11,7 +11,7 @@ export default function ApiDocsPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold text-gray-200 mb-4">Free & Open API Documentation</h1>
         <p className="text-xl text-gray-200 mb-4">
-          Complete guide to integrating with the OpenStock API - completely free, forever
+          Complete guide to integrating with the OpenLearn API - completely free, forever
         </p>
         <div className="bg-blue-300 border border-blue-400 rounded-lg p-4">
           <p className="text-black text-sm">

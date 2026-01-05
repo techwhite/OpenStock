@@ -2,14 +2,14 @@ import { Metadata } from 'next';
 // Removed unused lucide-react imports
 
 export const metadata: Metadata = {
-  title: 'Help Center - OpenStock',
+  title: 'Help Center - OpenLearn',
   description: 'Free help and community support - no barriers, just guidance',
 };
 
 export default function HelpPage() {
   const faqs = [
     {
-      question: "Is OpenStock really free forever?",
+      question: "Is OpenLearn really free forever?",
       answer: "Yes! We're part of the Open Dev Society, which means we'll never lock knowledge behind paywalls. Core features remain free always. We run on community donations and the belief that financial tools should be accessible to everyone."
     },
     {
@@ -21,8 +21,8 @@ export default function HelpPage() {
       answer: "Navigate to any stock page and click the star icon. You can also search using the search bar and add directly from results. Everything is designed to be intuitive - no complex tutorials needed."
     },
     {
-      question: "Can I contribute to OpenStock?",
-      answer: "We'd love that! OpenStock is open source and community-driven. Check our GitHub for issues marked 'good first issue' or 'help wanted'. Every contribution, no matter how small, makes a difference."
+      question: "Can I contribute to OpenLearn?",
+      answer: "We'd love that! OpenLearn is open source and community-driven. Check our GitHub for issues marked 'good first issue' or 'help wanted'. Every contribution, no matter how small, makes a difference."
     },
     {
       question: "What if I find a bug or have a feature request?",
