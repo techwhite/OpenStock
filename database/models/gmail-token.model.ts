@@ -29,6 +29,14 @@ const GmailTokenSchema = new Schema<IGmailToken>(
       type: Number,
       required: true,
     },
+    // 设置token在创建4小时后自动过期删除
+    // 注意：虽然Google Access Token有效期只有1小时，我们需要Refresh Token来维持这4小时的会话
+    // 但是通过由于TTL索引，整个Session会在4小时后强制结束
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      expires: 14400, // 4小时 (4 * 60 * 60 秒)
+    },
   },
   {
     timestamps: true,
