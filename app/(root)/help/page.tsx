@@ -9,25 +9,10 @@ export const metadata: Metadata = {
 export default function HelpPage() {
   const faqs = [
     {
-      question: "Is OpenLearn really free forever?",
-      answer: "Yes! We're part of the Open Dev Society, which means we'll never lock knowledge behind paywalls. Core features remain free always. We run on community donations and the belief that financial tools should be accessible to everyone."
+      question: "",
+      answer: ""
     },
-    {
-      question: "I'm a student - can I use this for my projects?",
-      answer: "Absolutely! That's exactly why we built this. Use it for school projects, learning, or building your portfolio. Need help? Our community loves mentoring students. Email student@opendevsociety.org for extra support."
-    },
-    {
-      question: "How do I add stocks to my favorites?",
-      answer: "Navigate to any stock page and click the star icon. You can also search using the search bar and add directly from results. Everything is designed to be intuitive - no complex tutorials needed."
-    },
-    {
-      question: "Can I contribute to OpenLearn?",
-      answer: "We'd love that! OpenLearn is open source and community-driven. Check our GitHub for issues marked 'good first issue' or 'help wanted'. Every contribution, no matter how small, makes a difference."
-    },
-    {
-      question: "What if I find a bug or have a feature request?",
-      answer: "Please tell us! Submit issues on GitHub, join our Discord, or email opendevsociety@gmail.com. We see every report as a chance to make the platform better for everyone."
-    }
+    
   ];
 
   return (

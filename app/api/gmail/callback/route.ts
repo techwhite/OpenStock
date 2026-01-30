@@ -18,13 +18,13 @@ export async function GET(request: NextRequest) {
     // 处理用户拒绝授权的情况
     if (error) {
       return NextResponse.redirect(
-        new URL('/es?error=access_denied', request.url)
+        new URL('/?error=access_denied', request.url)
       );
     }
 
     if (!code) {
       return NextResponse.redirect(
-        new URL('/es?error=missing_code', request.url)
+        new URL('/?error=missing_code', request.url)
       );
     }
 
@@ -35,7 +35,7 @@ export async function GET(request: NextRequest) {
 
     if (!session?.user?.id) {
       return NextResponse.redirect(
-        new URL('/sign-in?redirect=/es', request.url)
+        new URL('/sign-in?redirect=/', request.url)
       );
     }
 
@@ -57,11 +57,11 @@ export async function GET(request: NextRequest) {
     );
 
     // 重定向到邮件页面
-    return NextResponse.redirect(new URL('/es?success=true', request.url));
+    return NextResponse.redirect(new URL('/?success=true', request.url));
   } catch (error) {
     console.error('Error in Gmail OAuth callback:', error);
     return NextResponse.redirect(
-      new URL('/es?error=auth_failed', request.url)
+      new URL('/?error=auth_failed', request.url)
     );
   }
 }

@@ -15,10 +15,10 @@ export const sendWelcomeEmail = async ({ email, name, intro }: WelcomeEmailData)
         .replace('{{intro}}', intro);
 
     const mailOptions = {
-        from: `"Openstock" <opendevsociety@gmail.com>`,
+        from: `"OpenLearn" <opendevsociety@gmail.com>`,
         to: email,
-        subject: `Welcome to Openstock - your open-source stock market toolkit!`,
-        text: 'Thanks for joining Openstock, an initiative by open dev society',
+        subject: `Welcome to OpenLearn - your open-source stock market toolkit!`,
+        text: 'Thanks for joining OpenLearn, an initiative by open dev society',
         html: htmlTemplate,
     }
 
@@ -33,10 +33,10 @@ export const sendNewsSummaryEmail = async (
         .replace('{{newsContent}}', newsContent);
 
     const mailOptions = {
-        from: `"Openstock" <opendevsociety@gmail.com>`,
+        from: `"OpenLearn" <opendevsociety@gmail.com>`,
         to: email,
         subject: `📈 Market News Summary Today - ${date}`,
-        text: `Today's market news summary from Openstock`,
+        text: `Today's market news summary from OpenLearn`,
         html: htmlTemplate,
     };
 

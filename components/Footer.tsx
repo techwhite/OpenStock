@@ -23,7 +23,7 @@ const Footer = () => {
                         </p>
                         <div className="flex space-x-6">
                             <Link
-                                href="https://github.com/Open-Dev-Society/OpenStock"
+                                href="https://github.com/Open-Dev-Society/OpenLearn"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-gray-400 hover:text-white transition-colors duration-200 relative group"

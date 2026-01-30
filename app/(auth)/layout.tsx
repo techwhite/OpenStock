@@ -21,7 +21,7 @@ const Layout = async ({ children }: { children : React.ReactNode }) => {
                     {children}
                 </div>
             </section>
-            <section className="auth-right-section">
+            {/* <section className="auth-right-section">
                 <div className="z-10 relative lg:mt-4 lg:mb-16">
                     <blockquote className="auth-blockquote">
                         “For me, OpenLearn isn’t just another stock app. It’s about giving people clarity and control in the market, without barriers or subscriptions.”
@@ -41,7 +41,7 @@ const Layout = async ({ children }: { children : React.ReactNode }) => {
                 <div className="flex-1 relative">
                     <Image src="/assets/images/dashboard.png" alt="Dashboard Preview" width={1440} height={1150} className="auth-dashboard-preview absolute top-0" />
                 </div>
-            </section>
+            </section> */}
 
         </main>
     )

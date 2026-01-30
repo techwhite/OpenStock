@@ -5,7 +5,7 @@ export const WELCOME_EMAIL_TEMPLATE = `<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
     <meta name="x-apple-disable-message-reformatting">
-    <title>Welcome to OpenStock</title>
+    <title>Welcome to OpenLearn</title>
     <!--[if mso]>
     <noscript>
         <xml>

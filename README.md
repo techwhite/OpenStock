@@ -26,11 +26,11 @@
   </div>
 </div>
 
-# OpenStock
+# OpenLearn
 
-OpenStock is an open-source alternative to expensive market platforms. Track real-time prices, set personalized alerts, and explore detailed company insights — built openly, for everyone, forever free.
+OpenLearn is an open-source alternative to expensive market platforms. Track real-time prices, set personalized alerts, and explore detailed company insights — built openly, for everyone, forever free.
 
-Note: OpenStock is community-built and not a brokerage. Market data may be delayed based on provider rules and your configuration. Nothing here is financial advice.
+Note: OpenLearn is community-built and not a brokerage. Market data may be delayed based on provider rules and your configuration. Nothing here is financial advice.
 
 ## 📋 Table of Contents
 
@@ -51,7 +51,7 @@ Note: OpenStock is community-built and not a brokerage. Market data may be delay
 
 ## ✨ Introduction
 
-OpenStock is a modern stock market app powered by Next.js (App Router), shadcn/ui and Tailwind CSS, Better Auth for authentication, MongoDB for persistence, Finnhub for market data, and TradingView widgets for charts and market views.
+OpenLearn is a modern stock market app powered by Next.js (App Router), shadcn/ui and Tailwind CSS, Better Auth for authentication, MongoDB for persistence, Finnhub for market data, and TradingView widgets for charts and market views.
 
 ## 🌍 Open Dev Society Manifesto <a name="manifesto"></a>
 
