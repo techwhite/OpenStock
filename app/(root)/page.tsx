@@ -4,10 +4,12 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { EmailList } from '@/components/emails/EmailList';
 import { EmailFilter } from '@/components/emails/EmailFilter';
+import { EmailCompose } from '@/components/emails/EmailCompose';
 import { Button } from '@/components/ui/button';
 import type { GmailMessage } from '@/lib/gmail/types';
 import { Mail, AlertCircle, RefreshCw } from 'lucide-react';
 import { format, subDays } from 'date-fns';
+import { fetchWithDecryption } from '@/lib/api-helper';
 
 export default function EmailsPage() {
   const searchParams = useSearchParams();
@@ -23,7 +25,7 @@ export default function EmailsPage() {
     endDate?: string;
     isUnread?: boolean;
   }>({
-    startDate: format(subDays(new Date(), 5), 'yyyy-MM-dd'),
+    startDate: format(subDays(new Date(), 30), 'yyyy-MM-dd'),
     endDate: format(new Date(), 'yyyy-MM-dd'),
   });
 
@@ -81,14 +83,7 @@ export default function EmailsPage() {
       if (filter.endDate) params.append('endDate', filter.endDate);
       if (filter.isUnread) params.append('isUnread', 'true');
 
-      const response = await fetch(`/api/gmail/messages?${params.toString()}`);
-      
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to fetch messages');
-      }
-
-      const data = await response.json();
+      const data = await fetchWithDecryption<{ messages: GmailMessage[] }>(`/api/gmail/messages?${params.toString()}`);
       setMessages(data.messages || []);
     } catch (err: any) {
       console.error('Error fetching messages:', err);
@@ -130,13 +125,14 @@ export default function EmailsPage() {
       <div className="mb-6">
         <h1 className="text-3xl font-bold mb-2">我的邮件</h1>
         <p className="text-muted-foreground">
-          查看最近 5 天的 Gmail 邮件
+          查看和管理您的 Gmail 邮件
         </p>
       </div>
 
       {/* 操作栏 */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
+          <EmailCompose onSent={handleRefresh} />
           <EmailFilter onFilterChange={setFilter} isLoading={isLoading} />
           <Button
             variant="outline"

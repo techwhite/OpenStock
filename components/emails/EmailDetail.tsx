@@ -10,7 +10,10 @@ import {
 } from '@/components/ui/dialog';
 import type { GmailMessageDetail } from '@/lib/gmail/types';
 import { parseEmailAddress, formatEmailDate, sanitizeHtmlContent, formatFileSize } from '@/lib/gmail/utils';
-import { Loader2, Paperclip, User, Calendar } from 'lucide-react';
+import { EmailCompose } from './EmailCompose';
+import { Button } from '@/components/ui/button';
+import { Loader2, Paperclip, User, Calendar, Reply, Forward } from 'lucide-react';
+import { fetchWithDecryption } from '@/lib/api-helper';
 
 interface EmailDetailProps {
   messageId: string;
@@ -22,6 +25,8 @@ export function EmailDetail({ messageId, open, onClose }: EmailDetailProps) {
   const [message, setMessage] = useState<GmailMessageDetail | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [composeOpen, setComposeOpen] = useState(false);
+  const [composeData, setComposeData] = useState<any>(null);
 
   useEffect(() => {
     if (open && messageId) {
@@ -34,13 +39,7 @@ export function EmailDetail({ messageId, open, onClose }: EmailDetailProps) {
     setError(null);
 
     try {
-      const response = await fetch(`/api/gmail/messages/${messageId}`);
-      
-      if (!response.ok) {
-        throw new Error('Failed to fetch message details');
-      }
-
-      const data = await response.json();
+      const data = await fetchWithDecryption<GmailMessageDetail>(`/api/gmail/messages/${messageId}`);
       setMessage(data);
     } catch (err) {
       console.error('Error fetching message details:', err);
@@ -48,6 +47,27 @@ export function EmailDetail({ messageId, open, onClose }: EmailDetailProps) {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleReply = () => {
+    if (!message) return;
+    setComposeData({
+      to: parseEmailAddress(message.from).email,
+      subject: message.subject.startsWith('Re:') ? message.subject : `Re: ${message.subject}`,
+      threadId: message.threadId,
+      body: `\n\n--- 在 ${message.date}，${message.from} 写道 ---\n${message.body.text || ''}`,
+    });
+    setComposeOpen(true);
+  };
+
+  const handleForward = () => {
+    if (!message) return;
+    setComposeData({
+      to: '',
+      subject: message.subject.startsWith('Fwd:') ? message.subject : `Fwd: ${message.subject}`,
+      body: `\n\n--- 转发邮件 ---\n发件人: ${message.from}\n日期: ${message.date}\n主题: ${message.subject}\n\n${message.body.text || ''}`,
+    });
+    setComposeOpen(true);
   };
 
   return (
@@ -107,6 +127,17 @@ export function EmailDetail({ messageId, open, onClose }: EmailDetailProps) {
                     {message.cc.join(', ')}
                   </div>
                 )}
+
+                <div className="flex gap-2 pt-2">
+                  <Button variant="outline" size="sm" onClick={handleReply}>
+                    <Reply className="mr-2 h-4 w-4" />
+                    回复
+                  </Button>
+                  <Button variant="outline" size="sm" onClick={handleForward}>
+                    <Forward className="mr-2 h-4 w-4" />
+                    转发
+                  </Button>
+                </div>
               </div>
 
               {/* 附件信息 */}
@@ -155,6 +186,12 @@ export function EmailDetail({ messageId, open, onClose }: EmailDetailProps) {
           </>
         ) : null}
       </DialogContent>
+      
+      <EmailCompose 
+        open={composeOpen} 
+        onOpenChange={setComposeOpen}
+        initialData={composeData}
+      />
     </Dialog>
   );
 }

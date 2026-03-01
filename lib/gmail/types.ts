@@ -55,3 +55,12 @@ export interface GmailListResponse {
   nextPageToken?: string;
   resultSizeEstimate: number;
 }
+
+export interface GmailSendParams {
+  to: string;
+  subject: string;
+  body: string;
+  cc?: string;
+  bcc?: string;
+  threadId?: string;
+}

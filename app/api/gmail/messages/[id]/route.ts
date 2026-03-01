@@ -4,6 +4,9 @@ import { connectToDatabase } from '@/database/mongoose';
 import GmailToken from '@/database/models/gmail-token.model';
 import { auth } from '@/lib/better-auth/auth';
 import { headers } from 'next/headers';
+import { encryptObject } from '@/lib/crypto';
+
+const ENCRYPTION_KEY = process.env.API_ENCRYPTION_KEY || '';
 
 /**
  * GET /api/gmail/messages/[id]
@@ -66,6 +69,11 @@ export async function GET(
 
     // 获取邮件详情
     const message = await gmailClient.getMessage(id);
+
+    if (ENCRYPTION_KEY) {
+      const encryptedData = await encryptObject(message, ENCRYPTION_KEY);
+      return NextResponse.json({ encryptedData });
+    }
 
     return NextResponse.json(message);
   } catch (error) {

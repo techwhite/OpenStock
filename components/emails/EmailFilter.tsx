@@ -22,7 +22,7 @@ interface EmailFilterProps {
 export function EmailFilter({ onFilterChange, isLoading }: EmailFilterProps) {
   const [sender, setSender] = useState('');
   const [subject, setSubject] = useState('');
-  const [startDate, setStartDate] = useState(format(subDays(new Date(), 5), 'yyyy-MM-dd'));
+  const [startDate, setStartDate] = useState(format(subDays(new Date(), 30), 'yyyy-MM-dd'));
   const [endDate, setEndDate] = useState(format(new Date(), 'yyyy-MM-dd'));
   const [isUnread, setIsUnread] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -41,11 +41,11 @@ export function EmailFilter({ onFilterChange, isLoading }: EmailFilterProps) {
   const handleClearFilter = () => {
     setSender('');
     setSubject('');
-    setStartDate(format(subDays(new Date(), 5), 'yyyy-MM-dd'));
+    setStartDate(format(subDays(new Date(), 30), 'yyyy-MM-dd'));
     setEndDate(format(new Date(), 'yyyy-MM-dd'));
     setIsUnread(false);
     onFilterChange({
-      startDate: format(subDays(new Date(), 5), 'yyyy-MM-dd'),
+      startDate: format(subDays(new Date(), 30), 'yyyy-MM-dd'),
       endDate: format(new Date(), 'yyyy-MM-dd'),
     });
     setIsOpen(false);

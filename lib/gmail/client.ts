@@ -38,6 +38,7 @@ export class GmailClient {
   getAuthUrl(): string {
     const scopes = [
       'https://www.googleapis.com/auth/gmail.readonly',
+      'https://www.googleapis.com/auth/gmail.send',
     ];
 
     return this.oauth2Client.generateAuthUrl({
@@ -86,10 +87,10 @@ export class GmailClient {
   private buildQuery(filter: GmailFilter): string {
     const queryParts: string[] = [];
 
-    // 默认查询最近 5 天的邮件
+    // 默认查询最近 30 天的邮件
     const startDate = filter.startDate 
       ? new Date(filter.startDate) 
-      : subDays(new Date(), 5);
+      : subDays(new Date(), 30);
     
     const endDate = filter.endDate 
       ? new Date(filter.endDate) 
@@ -324,6 +325,60 @@ export class GmailClient {
     }
 
     return attachments;
+  }
+  /**
+   * 发送邮件
+   */
+  async sendEmail(params: { to: string; subject: string; body: string; cc?: string; bcc?: string; threadId?: string }): Promise<any> {
+    if (!this.gmail) {
+      throw new Error('Gmail client not initialized. Please set credentials first.');
+    }
+
+    try {
+      const subject = params.subject;
+      const utf8Subject = `=?utf-8?B?${Buffer.from(subject).toString('base64')}?=`;
+      
+      const messageParts = [
+        `To: ${params.to}`,
+        `Subject: ${utf8Subject}`,
+        'Content-Type: text/html; charset=utf-8',
+        'MIME-Version: 1.0',
+      ];
+
+      if (params.cc) {
+        messageParts.push(`Cc: ${params.cc}`);
+      }
+
+      if (params.bcc) {
+        messageParts.push(`Bcc: ${params.bcc}`);
+      }
+
+      // 额外的空行分隔头部和正文
+      const message = [
+        ...messageParts,
+        '',
+        params.body
+      ].join('\r\n');
+
+      const encodedMessage = Buffer.from(message)
+        .toString('base64')
+        .replace(/\+/g, '-')
+        .replace(/\//g, '_')
+        .replace(/=+$/, '');
+
+      const response = await this.gmail.users.messages.send({
+        userId: 'me',
+        requestBody: {
+          raw: encodedMessage,
+          threadId: params.threadId,
+        },
+      });
+
+      return response.data;
+    } catch (error) {
+      console.error('Error sending email:', error);
+      throw new Error('Failed to send email via Gmail');
+    }
   }
 }
 
