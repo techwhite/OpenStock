@@ -1,6 +1,6 @@
 import { google } from 'googleapis';
 import type { gmail_v1 } from 'googleapis';
-import { subDays, formatISO } from 'date-fns';
+import { subDays, addDays, formatISO } from 'date-fns';
 import type { GmailMessage, GmailMessageDetail, GmailFilter, GmailListResponse, GmailAttachment } from './types';
 
 /**
@@ -97,6 +97,7 @@ export class GmailClient {
       : new Date();
 
     // Gmail 查询语法：after:YYYY/MM/DD before:YYYY/MM/DD
+    // 注意：Gmail 的 before: 是 exclusive（不包含当天），所以需要 +1 天
     const formatDate = (date: Date) => {
       const year = date.getFullYear();
       const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -105,7 +106,7 @@ export class GmailClient {
     };
 
     queryParts.push(`after:${formatDate(startDate)}`);
-    queryParts.push(`before:${formatDate(endDate)}`);
+    queryParts.push(`before:${formatDate(addDays(endDate, 1))}`);
 
     if (filter.sender) {
       queryParts.push(`from:${filter.sender}`);
@@ -146,7 +147,7 @@ export class GmailClient {
     }
 
     const query = this.buildQuery(filter);
-    const maxResults = filter.maxResults || 50;
+    const maxResults = filter.maxResults || 200;
 
     try {
       const response = await this.gmail.users.messages.list({

@@ -80,7 +80,7 @@ export async function GET(request: NextRequest) {
       startDate: searchParams.get('startDate') || undefined,
       endDate: searchParams.get('endDate') || undefined,
       isUnread: searchParams.get('isUnread') === 'true' || undefined,
-      maxResults: parseInt(searchParams.get('maxResults') || '50'),
+      maxResults: parseInt(searchParams.get('maxResults') || '200'),
     };
 
     // 获取邮件列表

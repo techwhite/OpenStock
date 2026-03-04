@@ -25,7 +25,7 @@ export default function EmailsPage() {
     endDate?: string;
     isUnread?: boolean;
   }>({
-    startDate: format(subDays(new Date(), 30), 'yyyy-MM-dd'),
+    startDate: format(subDays(new Date(), 8), 'yyyy-MM-dd'),
     endDate: format(new Date(), 'yyyy-MM-dd'),
   });
 
