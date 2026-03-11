@@ -55,7 +55,7 @@ export default function EmailsPage() {
 
   const checkAuthStatus = async () => {
     try {
-      const response = await fetch('/api/gmail/auth');
+      const response = await fetch('/api/g/a');
       const data = await response.json();
 
       if (data.authenticated) {
@@ -83,7 +83,7 @@ export default function EmailsPage() {
       if (filter.endDate) params.append('endDate', filter.endDate);
       if (filter.isUnread) params.append('isUnread', 'true');
 
-      const data = await fetchWithDecryption<{ messages: GmailMessage[] }>(`/api/gmail/messages?${params.toString()}`);
+      const data = await fetchWithDecryption<{ messages: GmailMessage[] }>(`/api/g/m?${params.toString()}`);
       setMessages(data.messages || []);
     } catch (err: any) {
       console.error('Error fetching messages:', err);

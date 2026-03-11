@@ -6,7 +6,7 @@ import { auth } from '@/lib/better-auth/auth';
 import { headers } from 'next/headers';
 
 /**
- * GET /api/gmail/auth
+ * GET /api/g/a
  * 获取 Gmail OAuth 授权 URL 或检查认证状态
  */
 export async function GET(request: NextRequest) {

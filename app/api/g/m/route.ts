@@ -10,7 +10,7 @@ import { encryptObject, decryptToObject } from '@/lib/crypto';
 const ENCRYPTION_KEY = process.env.API_ENCRYPTION_KEY || '';
 
 /**
- * GET /api/gmail/messages
+ * GET /api/g/m
  * 获取用户的 Gmail 邮件列表
  * 
  * Query Parameters:
@@ -102,7 +102,7 @@ export async function GET(request: NextRequest) {
 }
 
 /**
- * POST /api/gmail/messages
+ * POST /api/g/m
  * 发送 Gmail 邮件
  */
 export async function POST(request: NextRequest) {

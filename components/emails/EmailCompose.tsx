@@ -60,7 +60,7 @@ export function EmailCompose({ onSent, initialData, trigger, open, onOpenChange 
     setIsSending(true);
 
     try {
-      await fetchWithDecryption('/api/gmail/messages', {
+      await fetchWithDecryption('/api/g/m', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

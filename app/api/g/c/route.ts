@@ -6,7 +6,7 @@ import { auth } from '@/lib/better-auth/auth';
 import { headers } from 'next/headers';
 
 /**
- * GET /api/gmail/callback
+ * GET /api/g/c
  * 处理 Google OAuth 回调，交换授权码获取 tokens
  */
 export async function GET(request: NextRequest) {

@@ -39,7 +39,7 @@ export function EmailDetail({ messageId, open, onClose }: EmailDetailProps) {
     setError(null);
 
     try {
-      const data = await fetchWithDecryption<GmailMessageDetail>(`/api/gmail/messages/${messageId}`);
+      const data = await fetchWithDecryption<GmailMessageDetail>(`/api/g/m/${messageId}`);
       setMessage(data);
     } catch (err) {
       console.error('Error fetching message details:', err);

@@ -9,7 +9,7 @@ import { encryptObject } from '@/lib/crypto';
 const ENCRYPTION_KEY = process.env.API_ENCRYPTION_KEY || '';
 
 /**
- * GET /api/gmail/messages/[id]
+ * GET /api/g/m/[id]
  * 获取单封邮件的详细内容
  */
 export async function GET(
